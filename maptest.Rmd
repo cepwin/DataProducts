@@ -1,0 +1,29 @@
+---
+title: "Oceanside"
+author: "Wendy Sarrett"
+date: "February 4, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<H2 id=date></H2>
+
+<script>
+var today = new Date();
+document.getElementById('date').innerHTML = today
+</script>
+
+```{r echo=FALSE}
+library(leaflet)
+df<-data.frame(lat=c(40.625233,40.626001, 40.636433,40.63541),lng=c(-73.642172,-73.629183,-73.629653,-73.654423))
+sites<-c("where I grew up",
+        "<a href='http://fieldfinder.com/field_details.php?Wrights-Field-76'>Wrights Field (ballfield)</a>",
+   "<a href='http://oceansideschools.org/7hs/index.htm'>Oceanside High School</a>",
+  "<a href='http://www.lawsonpub.com/'>Lawson Pub</a>" )
+my_map <- df %>% leaflet() %>% addTiles() %>%
+  addMarkers(popup = sites)
+my_map
+```
